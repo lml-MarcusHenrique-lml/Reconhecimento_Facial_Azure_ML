@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            /* Ajuste este valor conforme necessário */
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2 style="color: #008080;">Formulário de Cálculo para Câmara Fria</h2>
+
+        <div class="form-group">
+            <label for="altura">Altura:</label>
+            <select id="altura" name="altura">
+                <option value="1.80">2.80m</option>
+                <option value="2.50">2.50m</option>
+                <option value="2.30">2.30m</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="largura">Largura:</label>
+            <input type="number" id="largura" name="largura">
+        </div>
+
+        <div class="form-group">
+            <label for="comprimento">Comprimento:</label>
+            <input type="number" id="comprimento" name="comprimento">
+        </div>
+
+        <div class="form-group">
+            <label for="tipoPainel">Tipo de Painel:</label>
+            <select id="tipoPainel" name="tipoPainel">
+                <option value="1.1">PIR (1,10m)</option>
+                <option value="1.15">EPS (1,15m)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="divisoria">Divisória:</label>
+            <select id="divisoria" name="divisoria">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button onclick="calcular()">Calcular</button>
+        </div>
+
+        <script>
+            function calcular() {
+                var altura = parseFloat(document.getElementById('altura').value);
+                var largura = parseFloat(document.getElementById('largura').value);
+                var comprimento = parseFloat(document.getElementById('comprimento').value);
+                var tipoPainel = parseFloat(document.getElementById('tipoPainel').value);
+                var divisoria = document.getElementById('divisoria').value === 'sim';
+
+                // Calcula a quantidade de placas para as paredes laterais
+                var numPlacasParedes = Math.ceil(2 * (comprimento + largura) / tipoPainel);
+
+                // Calcula a quantidade de placas para o teto (baseado no maior lado)
+                var maiorLado = Math.max(comprimento, largura);
+                var numPlacasTeto = Math.ceil(maiorLado / tipoPainel);
+
+                // Se houver uma divisória, calcula a quantidade de placas para ela (baseado no menor lado)
+                var numPlacasDivisoria = 0;
+                if (divisoria) {
+                    var menorLado = Math.min(comprimento, largura);
+                    numPlacasDivisoria = Math.ceil(menorLado / tipoPainel);
+                }
+
+                // Soma todas as placas
+                var numPlacasTotal = numPlacasParedes + numPlacasTeto + numPlacasDivisoria;
+
+                alert('Número de placas necessárias: ' + numPlacasTotal);
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro e Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .login-container {
+            text-align: right;
+            padding: 10px;
+        }
+
+        .login-container form {
+            display: inline-block;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container input[type="email"] {
+            width: calc(30% - 5px);
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .login-container input[type="submit"] {
+            width: calc(20% - 5px);
+            margin-left: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm" action="/login" method="post" onsubmit="return validarLogin()">
+            <input type="text" id="username" name="username" placeholder="Usuário" required>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Formulário de Cadastro</h2>
+        <form id="dadosPessoaisForm" action="/submit_form" method="post" onsubmit="return validarForm()">
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" required><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="telefone">Telefone:</label><br>
+            <input type="tel" id="telefone" name="telefone" required><br>
+
+            <label for="endereco">Endereço:</label><br>
+            <textarea id="endereco" name="endereco" required></textarea><br>
+
+            <label for="idade">Idade:</label><br>
+            <input type="number" id="idade" name="idade" required><br>
+
+            <label for="genero">Gênero:</label><br>
+            <select id="genero" name="genero" required>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro</option>
+            </select><br>
+
+            <label for="senha">Senha:</label><br>
+            <input type="password" id="senha" name="senha" required><br>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+
+    <script>
+        function validarForm() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("telefone").value;
+            var endereco = document.getElementById("endereco").value;
+            var idade = document.getElementById("idade").value;
+            var genero = document.getElementById("genero").value;
+            var senha = document.getElementById("senha").value;
+
+            if (nome === "" || email === "" || telefone === "" || endereco === "" || idade === "" || genero === "" || senha === "") {
+                alert("Por favor, preencha todos os campos do formulário.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validarLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Aqui você pode adicionar a lógica de autenticação, por exemplo, fazer uma requisição HTTP para validar o login
+
+            if (username === "usuario" && password === "senha")
+    {
+      alert("Login realizado com sucesso!");
+      return true; // Retorna true se o login for válido
+    } else {
+      alert("Usuário ou senha incorretos. Por favor, tente novamente.");
+      return false; // Retorna false se o login for inválido
+    }
+  }
+</script>
+    </body>
+    
+    </html>
