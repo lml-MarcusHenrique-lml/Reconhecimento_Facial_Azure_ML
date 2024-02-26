@@ -69,8 +69,8 @@
     <div class="form-group">
         <label for="altura">Altura:</label>
         <select id="altura" name="altura">
-            <option value="2.80">2.80m</option>
             <option value="2.50">2.50m</option>
+            <option value="2.80">2.80m</option>
             <option value="3.00">3.00m</option>
             <!-- Adicione mais opções conforme necessário -->
         </select>
@@ -96,7 +96,7 @@
     </div>
 
     <div class="form-group">
-        <label for="divisoria">Divisória Criação de Temperatura Diferentes:</label>
+        <label for="divisoria">Divisória Interna para Separar Ambientes:</label>
         <select id="divisoria" name="divisoria">
             <option value="vazio">selecione</option>
             <option value="sim">Sim</option>
@@ -108,12 +108,20 @@
         <h3>Insumos</h3>
         <p>Preenchimento opcional, caso queira informar insumos para cotação.</p>
         <div class="insumos-item">
-            <label for="porta">Porta Fria:</label>
+            <label for="porta">Tipo de Porta:</label>
             <select id="porta" name="porta">
+                <option value="vazio">Selecione Tipo de Porta</option>
                 <option value="0">Sem porta</option>
                 <option value="1">Porta Reverse Giratoria 0,80m x 1,80m</option>
-                <option value="2">Porta Giratoria 1,00m x 2,00m</option>
+                <option value="2">Porta Reverse Giratoria 1,00m x 2,00m</option>
                 <option value="3">Porta Correr    1,00m x 2,00m</option>
+            </select>
+            <br><br>
+            <label for="abertura">Abertura da Porta:</label>
+            <select id="abertura" name="abertura">
+                <option value="vazio">selecione</option>
+                <option value="sim">Esquerda</option>
+                <option value="nao">Direita</option>
             </select>
         </div>
         <div class="insumos-item">
