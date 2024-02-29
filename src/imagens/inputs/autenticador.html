@@ -115,8 +115,8 @@
             <label for="endereco">Endereço:</label><br>
             <textarea id="endereco" name="endereco" required></textarea><br>
 
-            <label for="idade">Idade:</label><br>
-            <input type="number" id="idade" name="idade" required><br>
+            <label for="idade">Nascimento:</label><br>
+            <input type="date" id="idade" name="idade" required><br>
 
             <label for="genero">Gênero:</label><br>
             <select id="genero" name="genero" required>
@@ -158,13 +158,13 @@
 
             if (username === "usuario" && password === "senha")
     {
-      alert("Login realizado com sucesso!");
+        alert("Login realizado com sucesso!");
       return true; // Retorna true se o login for válido
     } else {
-      alert("Usuário ou senha incorretos. Por favor, tente novamente.");
+        alert("Usuário ou senha incorretos. Por favor, tente novamente.");
       return false; // Retorna false se o login for inválido
     }
-  }
+}
 </script>
     </body>
     
