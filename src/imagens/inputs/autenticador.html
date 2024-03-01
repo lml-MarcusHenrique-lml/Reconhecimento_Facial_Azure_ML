@@ -150,39 +150,113 @@
     </div>
 
     <script>
-        function validarForm() {
-            var nome = document.getElementById("nome").value;
-            var email = document.getElementById("email").value;
-            var telefone = document.getElementById("telefone").value;
-            var endereco = document.getElementById("endereco").value;
-            var idade = document.getElementById("idade").value;
-            var genero = document.getElementById("genero").value;
-            var senha = document.getElementById("senha").value;
+       function validarForm() {
+    var nome = document.getElementById("nome").value;
+    var email = document.getElementById("email").value;
+    var telefone = document.getElementById("telefone").value;
+    var endereco = document.getElementById("endereco").value;
+    var dataNascimento = document.getElementById("dataNascimento").value;
+    var genero = document.getElementById("genero").value;
+    var senha = document.getElementById("senha").value;
+    var confirmaSenha = document.getElementById("confirmaSenha").value;
 
-            if (nome === "" || email === "" || telefone === "" || endereco === "" || idade === "" || genero === "" || senha === "") {
-                alert("Por favor, preencha todos os campos do formulário.");
-                return false;
-            }
+    // Validação de nome
+    if (nome === "") {
+        alert("Por favor, digite seu nome completo.");
+        return false;
+    }
 
-            return true;
-        }
+    // Validação de email
+    if (email === "" || !validarEmail(email)) {
+        alert("Por favor, digite um endereço de email válido.");
+        return false;
+    }
 
-        function validarLogin() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+    // Validação de telefone
+    if (telefone === "") {
+        alert("Por favor, digite seu número de telefone.");
+        return false;
+    }
 
-            // Aqui você pode adicionar a lógica de autenticação, por exemplo, fazer uma requisição HTTP para validar o login
+    // Validação de endereço
+    if (endereco === "") {
+        alert("Por favor, digite seu endereço completo.");
+        return false;
+    }
 
-            if (username === "usuario" && password === "senha")
-    {
+    // Validação de data de nascimento
+    if (dataNascimento === "") {
+        alert("Por favor, digite sua data de nascimento.");
+        return false;
+    }
+
+    // Validação de genero
+    if (genero === "") {
+        alert("Por favor, selecione seu gênero.");
+        return false;
+    }
+
+    // Validação de senha
+    if (senha === "") {
+        alert("Por favor, digite uma senha.");
+        return false;
+    }
+
+    if (senha.length < 8) {
+        alert("A senha precisa ter no mínimo 8 caracteres.");
+        return false;
+    }
+
+    if (!/[a-z]/.test(senha)) {
+        alert("A senha precisa conter pelo menos uma letra minúscula.");
+        return false;
+    }
+
+    if (!/[A-Z]/.test(senha)) {
+        alert("A senha precisa conter pelo menos uma letra maiúscula.");
+        return false;
+    }
+
+    if (!/[0-9]/.test(senha)) {
+        alert("A senha precisa conter pelo menos um número.");
+        return false;
+    }
+
+    // Validação de confirmação de senha
+    if (confirmaSenha === "") {
+        alert("Por favor, confirme sua senha.");
+        return false;
+    }
+
+    if (senha !== confirmaSenha) {
+        alert("As senhas não coincidem.");
+        return false;
+    }
+
+    return true;
+}
+
+function validarEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function validarLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Simulação de autenticação (substitua por requisição HTTP)
+    if (username === "usuario" && password === "senha") {
         alert("Login realizado com sucesso!");
-      return true; // Retorna true se o login for válido
+        return true;
     } else {
         alert("Usuário ou senha incorretos. Por favor, tente novamente.");
-      return false; // Retorna false se o login for inválido
+        return false;
     }
 }
+
+
 </script>
-    </body>
+</body>
     
-    </html>
+</html>
