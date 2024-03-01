@@ -83,11 +83,22 @@
             width: calc(20% - 5px);
             margin-left: 5px;
         }
+        .recSenha{
+            margin-top: -10px;
+        }
+        
 
         @media (max-width: 600px) {
             .container {
                 padding: 10px;
             }
+        }
+     /* Novos estilos para os links */
+        .login-container a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -98,6 +109,12 @@
             <input type="password" id="password" name="password" placeholder="Senha" required>
             <input type="submit" value="Login">
         </form>
+        <div class="recSenha">
+                    <!-- Adicionando links para "Esqueceu a Senha" e "Cadastre-se" -->
+            <a href="#">Esqueceu a Senha?</a>
+            <a href="#">Cadastre-se</a>
+        </div>
+    
     </div>
 
     <div class="container">
